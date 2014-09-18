@@ -37,14 +37,31 @@ Login.prototype.login = function(_name, _email) {
 	return sessionId;
 };
 
+/*
+* Get Username for a sessionid
+*/
+Login.prototype.getName = function(sessionId){
+	return this.sessionMap[sessionId].name;
+};
+
+/*Get emailfor the sessionId
+*/
+Login.prototype.getEmail = function(sessionId){
+	return this.sessionMap[sessionId].email;
+};
+/*
+* Remove session Id fo the given sessionId
+*/
+Login.prototype.removeSessionId = function(sessionId){
+	delete this.sessionMap[sessionId];
+};
+
 /**
  * Logout from the server
  */ 
 Login.prototype.logout = function(sessionId) {
 	console.log('logout::' + sessionId);
-   /*
-	* TODO: Remove the given sessionId from the sessionMap
-	*/
+	delete this.sessionMap[sessionId];
 };
 
 // Export the Login class
